@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 const Employee = require('../model/EmployeeInfo');
+const verify = require('./verifytoken');
 
 
 // checking route
@@ -37,10 +38,14 @@ router.post('/register', async (req, res) => {
 router.post('/signin', async (req, res) => {
     const body = req.body;
     const user = await User.findOne({ email: body.email });
+    // substr() var em = body.email.substr(0, 6);
     if(user) {
         const validPassword = await bcrypt.compare(body.password, user.password);
         if(validPassword) {
-            res.status(200).json({ message: "Valid password"});
+            const token = jwt.sign({ _id: user._id}, process.env.TOKEN_SECRET);     //get token for login
+            res.header('auth-token', token).json({message: "Valid password",
+        token: token});
+            
         }
         else {
             res.status(200).json({message: "Invalid password"});
@@ -49,6 +54,15 @@ router.post('/signin', async (req, res) => {
     else {
         res.status(401).json({ error: "User does not exist"});
     }
+})
+
+router.get('/post', verify, (req,res) => {
+    res.json({
+        posts: {
+            title: "my post",
+            des: "hahahahahh"
+        }
+    });
 })
 
 module.exports = router;
