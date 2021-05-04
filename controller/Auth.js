@@ -14,8 +14,30 @@ router.get( '/', function(req, res, next) {
 })
 
 // Post for employees
-router.post( '/employee', function(req, res, next) {
-    console.log(req.body)
+//post for add employee
+router.post('/addEmployee', async (req, res) => {
+    const Employee = new EmployeeInfo({
+        EmployeeID: req.body.EmployeeID,
+        PositionID: req.body.PositionID,
+        Name: req.body.Name,
+        Surname: req.body.Surname,
+        Gender: req.body.Gender,
+        Birthdate: req.body.Birthdate,
+        Religion: req.body.Religion,
+        Nationality: req.body.Nationality,
+        Tel: req.body.Tel,
+        Email: req.body.Email,
+        street: req.body.street,
+        zip: req.body.zip,
+        Hire: req.body.Hire
+    });
+    try {
+        const savedEmployee = await Employee.save();
+        res.json(savedEmployee);
+    } catch (err) {
+        res.json({ message })
+    }
+
 })
 
 // Post fot register with hashed password
