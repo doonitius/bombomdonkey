@@ -44,7 +44,8 @@ router.post('/signin', async (req, res) => {
         if(validPassword) {
             const token = jwt.sign({ _id: user._id}, process.env.TOKEN_SECRET);     //get token for login
             res.header('auth-token', token).json({message: "Valid password",
-        token: token});
+        token: token,
+        role: user.ROLE});
             
         }
         else {
