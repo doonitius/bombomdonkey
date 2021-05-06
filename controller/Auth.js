@@ -8,7 +8,8 @@ const Employee = require('../model/EmployeeInfo');
 const { verifies, getRole } = require('./verifytoken');
 const role = require('../authorization/role');
 const {authUser} = require('./authUser');
-
+const localStorage = require("localStorage");
+const jwt_decode = require("jwt-decode");  //jwt-decode
 
 // checking route
 router.get( '/', function(req, res, next) {
@@ -66,10 +67,10 @@ router.post('/signin', async (req, res) => {
         const validPassword = await bcrypt.compare(body.password, user.password);
         if(validPassword) {
             const token = jwt.sign({ ROLE: user.ROLE}, process.env.TOKEN_SECRET);     //get token for login
+            localStorage.setItem('role',token);
             res.header('auth-token', token).json({message: "Valid password",
         token: token,
         role: user.ROLE});
-            
         }
         else {
             res.status(200).json({message: "Invalid password"});
@@ -81,6 +82,12 @@ router.post('/signin', async (req, res) => {
 })
 
 router.get('/post', verifies, authUser(role.HRPAY) ,(req,res) => {
+    // try to get role from local storage
+    const va = localStorage.getItem('role');
+    const decoded = jwt_decode(va);
+    const gRole = decoded.ROLE;
+    console.log(gRole);
+    //
     res.json({
         posts: {
             title: "my post",

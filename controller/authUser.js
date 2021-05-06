@@ -3,7 +3,7 @@ const User = require('../model/User');
 
 function authUser (role) {
     return async (req, res, next) => {
-        const gRole = await User.findOne({email: "itzy813@gmail.com"});
+        const gRole = await User.findOne({email: "jat0800@gmail.com"});
         if (!isAuthorized(gRole.ROLE, role)) {
         res.status(403).json({message: "forbidden"});
         }

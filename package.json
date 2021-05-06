@@ -16,9 +16,12 @@
     "express-validator": "^6.10.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^3.1.2",
+    "localStorage": "^1.0.4",
     "mongoose": "^5.12.7",
     "monk": "^7.3.4",
     "morgan": "~1.9.1",
+    "node-localstorage": "^2.1.6",
     "nodemon": "^2.0.7",
     "shortid": "^2.2.16"
   }
