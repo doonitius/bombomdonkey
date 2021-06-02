@@ -24,7 +24,7 @@ const Employeeschema = mongoose.Schema({
     },
     Birthdate : {
         type: Date,
-        default: new Date,
+        default: Date,
         require : true
     },
     Religion : {
@@ -32,14 +32,6 @@ const Employeeschema = mongoose.Schema({
         require: true 
     },
     Nationality : {
-        type: String,
-        require: true 
-    },
-    Tel : {
-        type: Number,
-        require: true 
-    },
-    Email : {
         type: String,
         require: true 
     },
@@ -51,14 +43,14 @@ const Employeeschema = mongoose.Schema({
         type: String,
         require: true 
     },
-    zip : {
-        type: Number,
-        require: true 
-    },
     Hire : {
         type: Date,
-        default: new Date,
-        require: true 
+        required: true
+    },
+    EmployeeImage : {
+        data: Buffer,
+        type: String,
+        require: true
     }
 })
 

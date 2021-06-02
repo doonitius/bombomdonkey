@@ -5,8 +5,10 @@ const Educationschema = mongoose.Schema({
         type : String,
         required : true
     },
+    // use multer package in post
     TranscriptFile : {
-        type : Undefined,     /////////????????
+        data : Buffer,
+        type : String,     /////////????????
         required : true
     },
     GPA : {

@@ -12,12 +12,12 @@
           <h2 class = "text-center">Login</h2>
           <form action="/" method = "POST">
             <div class="form-group mt-2">
-              <label for="_email">Email</label>
-              <input type = "text" name = "user_email" id="_email" class = "form-control">
+              <label for="email">Email</label>
+              <input type = "text" name = "email" id="email" class = "form-control">
             </div>
             <div class = "form-group mt-2">
-              <label for="_pass">Password</label>
-              <input type = "password" name="user_pass" id="_pass"class = "form-control">
+              <label for="pass">Password</label>
+              <input type = "password" name="pass" id="pass"class = "form-control">
             </div>
             <% if(locals.errors) { %>
               <ul class="alert alert-danger">

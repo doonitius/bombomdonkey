@@ -5,8 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var loginregisterRouter = require('./routes/login-register');
-var usersRouter = require('./routes/users');
-var homeRouter = require('./routes/home');
 const { body } = require('express-validator');
 const mongoose = require('mongoose');
 const Auth = require('./controller/Auth');
@@ -28,10 +26,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', loginregisterRouter);
-app.use('/users', usersRouter);
-app.use('/home', homeRouter);
+///////    app.use('/', loginregisterRouter);
 app.use('/api', Auth);
+
+require("./routes/project")(app);
+require("./routes/behavior")(app);
+require("./routes/promoHis")(app);
+require("./routes/BonusRe")(app);
+require("./routes/payment")(app);
+require("./routes/employee")(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,5 +56,5 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedT
   console.log('connected to DB')
 );
 
-//module.exports = app;
+module.exports = app;
 app.listen(3000, () => console.log("Server is running..."));
