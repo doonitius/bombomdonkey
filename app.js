@@ -35,6 +35,22 @@ require("./routes/promoHis")(app);
 require("./routes/BonusRe")(app);
 require("./routes/payment")(app);
 require("./routes/employee")(app);
+require("./routes/history")(app);
+
+/*
+var multer = require('multer');
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'upload')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.filename + '-' + Date.now())
+  }
+});
+
+var upload = multer({ storage: storage});
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

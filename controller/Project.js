@@ -1,8 +1,7 @@
-const Project = require('../model/projectInfo');
+const projectInfo = require('../model/projectInfo');
 const express = require('express');
 
 exports.add = async (req, res) => {
-try {
 
     const Project = new projectInfo({
         ProjectID: req.body.projectId,
@@ -14,12 +13,22 @@ try {
         ProfitRatio: req.body.profitratio,
         pManager: req.body.pmanager
     });
-
+try {
     const savedProject = await Project.save();
     res.json(savedProject);
 } catch (err) {
-    res.json({ message})
+    console.error(err)
+    res.send({err})
 }
 }
 
-//exports.view = async (req, res) =>
+// not finish
+exports.view = async (req, res) => {
+    const foundPorject = await projectInfo.find({ProjectID: req.body.projectId})
+    if(foundPorject) {
+        res.json(foundPorject);
+    }
+    else{
+        res.send({message: "Project does not found"});
+    }
+}

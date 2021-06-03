@@ -13,6 +13,7 @@ const Projectschema = mongoose.Schema({
         type: String,
         required : true
     },
+    // 0 = fail, 1 = on goin, 2 = success
     Status : {
         type: Number,
         required : true

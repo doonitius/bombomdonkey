@@ -25,3 +25,13 @@ exports.add = async (req, res) => {
     }
 }
 
+exports.view = async (req, res) => {
+    const foundemployee = await behavior.find({ EmployeeID: req.body.employeeID})
+    if(foundemployee){
+        res.json(foundemployee);
+    }
+    else{
+        res.send({message: "No behavior record"})
+    }
+}
+

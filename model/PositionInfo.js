@@ -24,6 +24,10 @@ const Positionschema = mongoose.Schema({
     baseWorkHour : {
         type: Number,
         required : true
+    },
+    Role : {
+        type: String,
+        required : true
     }
 })
 

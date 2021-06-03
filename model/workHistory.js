@@ -9,7 +9,7 @@ const workHistoryschema = mongoose.Schema({
         type : String,
         required : true
     },
-    postion : {
+    position : {
         type: String,
         required : true
     },

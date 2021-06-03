@@ -6,11 +6,11 @@ const Educationschema = mongoose.Schema({
         required : true
     },
     // use multer package in post
-    TranscriptFile : {
-        data : Buffer,
-        type : String,     /////////????????
-        required : true
-    },
+    //TranscriptFile : {
+      //  data : Buffer,
+      //  type : String,     /////////????????
+      //  required : true
+    //},
     GPA : {
         type: Number,
         required : true
