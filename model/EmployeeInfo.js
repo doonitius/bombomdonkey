@@ -24,14 +24,16 @@ const Employeeschema = mongoose.Schema({
     },
     Birthdate : {
         type: Date,
-        default: Date,
         require : true
     },
     Religion : {
         type: String,
-        require: true 
     },
     Nationality : {
+        type: String,
+        require: true 
+    },
+    Tel : {
         type: String,
         require: true 
     },
@@ -43,15 +45,22 @@ const Employeeschema = mongoose.Schema({
         type: String,
         require: true 
     },
+    zip : {
+        type: String,
+        require: true 
+    },
     Hire : {
         type: Date,
         required: true
     },
-    EmployeeImage : {
-        data: Buffer,
+    Email : {
         type: String,
-        require: true
-    }
+        require: true 
+    },
+    // EmployeeImage : {
+    //     data: Buffer,
+    //     type: String,
+    // }
 })
 
 module.exports = mongoose.model('Employee', Employeeschema);

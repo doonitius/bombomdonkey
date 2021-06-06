@@ -1,20 +1,8 @@
 const express = require('express');
-const Employee =  require('../model/EmployeeInfo');
-const bonus = require('../model/BonusRe'); 
+const Employee = require('../model/EmployeeInfo');
+const bonus = require('../model/BonusRe');
 
-exports.add = async (req, res) => {
-    // !!!!!
-    if (!req.body) {
-        console.log(req.body);
-        return res.status(400).send({message: "Have to have all data"});
-    }
-    //
-    //
-    if (Object.keys(req.body).length === 0) {
-        console.log(req.body);
-        return res.status(400).send({message: "Have to have all data"});
-    }
-    //
+exports.add = async(req, res) => {
 
     const id = await Employee.findOne({ EmployeeID: req.body.employeeID });
     const bon = new bonus({
@@ -22,12 +10,13 @@ exports.add = async (req, res) => {
         Date: req.body.bdate,
         Amount: req.body.amount
     });
-    if(!id) {
-        return res.status(404).send({message: "EmployeeID not found!"});
+    if (!id) {
+        return res.status(404).send({ message: "EmployeeID not found!" });
     }
     try {
         const savedbon = await bon.save();
+        res.status(200).send({ amount: bon.Amount })
     } catch (err) {
-        res.send({message: "error" })
+        res.send({ message: "error" })
     }
 }

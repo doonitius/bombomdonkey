@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
 })
 
 // Post for login
-router.post('/signin', async (req, res) => {
+exports.login = async (req, res) => {
     const body = req.body;
     const user = await User.findOne({ EmployeeID: body.EmployeeID });
     // substr() var em = body.email.substr(0, 6);
@@ -50,6 +50,6 @@ router.post('/signin', async (req, res) => {
     else {
         res.status(404).send({ message: "User does not exist"});
     }
-})
+}
 
 module.exports = router; 

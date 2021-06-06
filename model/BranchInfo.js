@@ -6,7 +6,7 @@ const Branchschema = mongoose.Schema({
         required : true
     },
     telBranch : {
-        type : Number,
+        type : String,
         required : true
     },
     Address : {

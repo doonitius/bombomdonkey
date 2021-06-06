@@ -6,11 +6,11 @@ const timeReschema = mongoose.Schema({
         required : true
     },
     Date : {
-        type : Number,
+        type : Date,
         required : true
     },
     Status : {
-        type: Boolean,
+        type: String,
         required : true
     },
     workHour : {

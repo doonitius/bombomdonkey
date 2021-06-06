@@ -17,6 +17,10 @@ const Paymentschema = mongoose.Schema({
         type: Number,
         required : true
     },
+    Pay : {
+        type: Number,
+        required : true
+    },
     deduction: {
         type: String,
         required : true

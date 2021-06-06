@@ -5,7 +5,7 @@ const trainInfoschema = mongoose.Schema({
         type : String,
         required : true
     },
-    Nmae : {
+    Name : {
         type : String,
         required : true
     },
