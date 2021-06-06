@@ -5,10 +5,8 @@ var fs = require('fs');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var loginregisterRouter = require('./routes/login-register');
 const { body } = require('express-validator');
 const mongoose = require('mongoose');
-const Auth = require('./controller/Auth');
 const bodyParser = require('body-parser');
 var cors = require('cors')
 
@@ -16,7 +14,7 @@ require('dotenv/config');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // view engine setup
@@ -28,12 +26,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors()); 
+app.use(cors());
 
 ///////    app.use('/', loginregisterRouter);
-app.use('/api', Auth);
-app.get('/', function (req, res) {
-  res.send('hello world')
+app.get('/', function(req, res) {
+    res.send('hello world')
 });
 require("./routes/project")(app);
 require("./routes/behavior")(app);
@@ -66,22 +63,22 @@ var upload = multer({ storage: storage});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true }, () =>
-  console.log('connected to DB')
+    console.log('connected to DB')
 );
 
 module.exports = app;

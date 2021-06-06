@@ -30,7 +30,6 @@ exports.add = async(req, res) => {
 
 exports.viewOne = async(req, res) => {
     const promotion = await Promotion.find({ EmployeeID: req.body.employeeID }, { _id: 0, __v: 0 });
-    //console.log(req.body.employeeID)
     if (!promotion) {
         return res
             .status(404)

@@ -31,5 +31,4 @@ exports.viewAll = async (req, res) => {
     }
 }
 
-// exports.view = async (req,res)
 

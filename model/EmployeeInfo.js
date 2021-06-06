@@ -1,66 +1,61 @@
 const mongoose = require('mongoose');
 
 const Employeeschema = mongoose.Schema({
-    EmployeeID : {
+    EmployeeID: {
         type: String,
         require: true
     },
-    PositionID : {
+    PositionID: {
         type: String,
-        require: true 
+        require: true
     },
-    Name : {
+    Name: {
         type: String,
-        require: true 
+        require: true
     },
-    Surname : {
+    Surname: {
         type: String,
-        require: true 
+        require: true
     },
-    // which type
-    Gender : {
+    Gender: {
         type: String,
-        require: true 
+        require: true
     },
-    Birthdate : {
+    Birthdate: {
         type: Date,
-        require : true
+        require: true
     },
-    Religion : {
+    Religion: {
         type: String,
     },
-    Nationality : {
+    Nationality: {
         type: String,
-        require: true 
+        require: true
     },
-    Tel : {
+    Tel: {
         type: String,
-        require: true 
+        require: true
     },
     street: {
         type: String,
-        require: true 
+        require: true
     },
-    City : {
+    City: {
         type: String,
-        require: true 
+        require: true
     },
-    zip : {
+    zip: {
         type: String,
-        require: true 
+        require: true
     },
-    Hire : {
+    Hire: {
         type: Date,
         required: true
     },
-    Email : {
+    Email: {
         type: String,
-        require: true 
+        require: true
     },
-    // EmployeeImage : {
-    //     data: Buffer,
-    //     type: String,
-    // }
 })
 
 module.exports = mongoose.model('Employee', Employeeschema);

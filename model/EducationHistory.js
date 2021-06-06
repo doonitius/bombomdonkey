@@ -1,31 +1,25 @@
 const mongoose = require('mongoose');
 
 const Educationschema = mongoose.Schema({
-    EmployeeID : {
-        type : String,
-        required : true
+    EmployeeID: {
+        type: String,
+        required: true
     },
-    // use multer package in post
-    //TranscriptFile : {
-      //  data : Buffer,
-      //  type : String,     /////////????????
-      //  required : true
-    //},
-    GPA : {
+    GPA: {
         type: Number,
-        required : true
+        required: true
     },
-    University : {
+    University: {
         type: String,
-        required : true
+        required: true
     },
-    Faculty : {
+    Faculty: {
         type: String,
-        required : true
+        required: true
     },
-    Department : {
+    Department: {
         type: String,
-        required : true
+        required: true
     }
 })
 

@@ -32,7 +32,6 @@ exports.addProject = async(req, res) => {
     }
 }
 
-// not finish
 exports.addParti = async(req, res) => {
     var i;
     for (i = 0; i < req.body.length; i++) {
@@ -52,7 +51,6 @@ exports.addParti = async(req, res) => {
             const savedWorkRe = await WorkRe.save();
             console.log("in try");
             console.log(WorkRe);
-            //res.status(200).send(savedWorkRe);
         } catch (err) {
             console.error(err)
             res.status(400).send({ message: "error" })
@@ -71,7 +69,6 @@ exports.viewAll = async(req, res) => {
 
 exports.viewOne = async(req, res) => {
     const foundproject = await projectInfo.findOne({ ProjectID: req.body.ProjectID }, { "_id": 0, "__v": 0 });
-    //console.log(req.body.employeeID)
     if (!foundproject) {
         return res.status(404).send({ message: "Project not found!" });
     }
@@ -84,8 +81,6 @@ exports.viewOne = async(req, res) => {
         console.log(emName);
         name[i] = emName.Name;
     }
-    //console.log(foundproject);
-    //console.log(work);
     console.log(name);
     try {
         res.status(200).send({ foundproject, name, work });
@@ -120,7 +115,6 @@ exports.deleteProject = async(req, res) => {
             res.status(504).send({ message: "error delete" });
         } else {
             console.log("project delete")
-                //res.status(200).send({ message: "project Deleted" });
             Workrecord.deleteMany(foundproject, function(err) {
                 if (err) {
                     res.status(500).send({ message: "error delete participant" });
